@@ -1,4 +1,4 @@
-package br.com.lepsistemas.aicurriculumvitae.infrastructure.spring;
+package br.com.lepsistemas.aicurriculumvitae.infrastructure.spring.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
