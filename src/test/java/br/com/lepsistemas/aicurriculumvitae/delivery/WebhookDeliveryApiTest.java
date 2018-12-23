@@ -19,7 +19,6 @@ import br.com.lepsistemas.aicurriculumvitae.infrastructure.spring.RequestDto;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.exceptions.InvalidActionException;
 
 @RunWith(MockitoJUnitRunner.class)
 public class WebhookDeliveryApiTest {
@@ -40,12 +39,6 @@ public class WebhookDeliveryApiTest {
 	@Before
 	public void initialize() {
 		delivery = new WebhookDeliveryApi(resumeService, personalInfoService, professionalGoalService);
-	}
-	
-	@Test(expected = InvalidActionException.class)
-	public void should_throw_invalid_action_exception() {
-		RequestDto request = createRequestFor("XXX");
-		delivery.get(request);
 	}
 	
 	@Test

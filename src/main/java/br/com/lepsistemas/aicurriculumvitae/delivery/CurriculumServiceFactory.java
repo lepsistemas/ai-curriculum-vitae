@@ -8,7 +8,7 @@ import br.com.lepsistemas.aicurriculumvitae.usecase.ApiService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.exceptions.InvalidActionException;
+import br.com.lepsistemas.aicurriculumvitae.usecase.exception.InvalidActionException;
 
 public class CurriculumServiceFactory {
 	

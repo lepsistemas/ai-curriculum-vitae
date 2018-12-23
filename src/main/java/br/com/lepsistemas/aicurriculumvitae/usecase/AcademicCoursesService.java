@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import br.com.lepsistemas.aicurriculumvitae.domain.AcademicCourse;
-import br.com.lepsistemas.aicurriculumvitae.usecase.exceptions.DateParseException;
+import br.com.lepsistemas.aicurriculumvitae.usecase.exception.DateParseException;
 
 @Service
 public class AcademicCoursesService {

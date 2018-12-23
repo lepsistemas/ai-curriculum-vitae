@@ -1,4 +1,4 @@
-package br.com.lepsistemas.aicurriculumvitae.usecase.exceptions;
+package br.com.lepsistemas.aicurriculumvitae.usecase.exception;
 
 public class DateParseException extends RuntimeException {
 

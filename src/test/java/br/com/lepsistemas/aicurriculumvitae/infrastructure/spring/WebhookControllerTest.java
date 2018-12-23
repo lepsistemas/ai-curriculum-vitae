@@ -23,6 +23,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import br.com.lepsistemas.aicurriculumvitae.delivery.WebhookDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.domain.PersonalInfo;
 import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
+import br.com.lepsistemas.aicurriculumvitae.usecase.exception.InvalidActionException;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(WebhookController.class)
@@ -35,6 +36,21 @@ public class WebhookControllerTest {
 	private WebhookDeliveryApi api;
 	
 	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
+	
+	@Test
+	public void should_throw_invalid_action_exception() throws Exception {
+		RequestDto request = createRequestFor("XXX");
+		given(api.get(request)).willThrow(new InvalidActionException("Invalid action"));
+		
+		MockHttpServletResponse response = mockMvc.perform(
+				post("/webhook")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(new ObjectMapper().writeValueAsString(request))
+		).andReturn().getResponse();
+		
+		assertThat(response.getStatus(), is(422));
+		assertThat(response.getContentAsString(), is("{\"status\":422,\"message\":\"Invalid action\"}"));
+	}
 
 	@Test
 	public void should_retrieve_all() throws Exception {
@@ -65,7 +81,7 @@ public class WebhookControllerTest {
 		).andReturn().getResponse();
 		
 		assertThat(response.getStatus(), is(200));
-		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. He is 34 years old and his nationality is Brazilian.\",\"displayText\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. He is 34 years old and his nationality is Brazilian.\"}"));
+		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. His nationality is Brazilian.\",\"displayText\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. His nationality is Brazilian.\"}"));
 	}
 
 	private RequestDto createRequestFor(String action) {
