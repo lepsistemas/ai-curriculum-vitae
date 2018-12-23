@@ -1,6 +1,5 @@
 package br.com.lepsistemas.aicurriculumvitae.delivery;
 
-import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 
 public class ResumeDeliveryApi {
@@ -11,8 +10,8 @@ public class ResumeDeliveryApi {
 		this.service = service;
 	}
 
-	public Resume get() {
-		return (Resume) service.fetch();
+	public ApiResponse get() {
+		return new ApiResponse(service.fetch());
 	}
 
 }

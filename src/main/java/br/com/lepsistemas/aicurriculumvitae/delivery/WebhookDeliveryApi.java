@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import br.com.lepsistemas.aicurriculumvitae.domain.Domain;
 import br.com.lepsistemas.aicurriculumvitae.infrastructure.spring.RequestDto;
+import br.com.lepsistemas.aicurriculumvitae.usecase.CurriculumServiceFactory;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;

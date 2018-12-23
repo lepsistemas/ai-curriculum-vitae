@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.lepsistemas.aicurriculumvitae.delivery.ResumeDeliveryApi;
-import br.com.lepsistemas.aicurriculumvitae.delivery.ResumeDto;
 import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
 
 @RestController
@@ -18,10 +17,9 @@ public class ResumeController {
 	private ResumeDeliveryApi api;
 	
 	@GetMapping("/resume")
-	public ResponseEntity<ResumeDto> get() throws ParseException {
-		Resume resume = api.get();
-		ResumeDto response = new ResumeDto(resume);
-		return ResponseEntity.ok(response);
+	public ResponseEntity<Resume> get() throws ParseException {
+		Resume resume = (Resume) api.get().getData();
+		return ResponseEntity.ok(resume);
 	}
 
 }

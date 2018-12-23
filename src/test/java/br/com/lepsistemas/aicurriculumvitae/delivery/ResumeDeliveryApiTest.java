@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.BDDMockito.given;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -25,8 +25,6 @@ public class ResumeDeliveryApiTest {
 	@Mock
 	private ResumeService service;
 	
-	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
-	
 	@Before
 	public void initialize() {
 		delivery = new ResumeDeliveryApi(service);
@@ -37,9 +35,9 @@ public class ResumeDeliveryApiTest {
 		Resume resume = createResume();
 		given(service.fetch()).willReturn(resume);
 		
-		Resume apiResponse = delivery.get();
+		ApiResponse apiResponse = delivery.get();
 		
-		assertThat(apiResponse, is(resume));
+		assertThat(apiResponse.getData(), is(resume));
 	}
 
 	private Resume createResume() throws ParseException {
@@ -52,7 +50,7 @@ public class ResumeDeliveryApiTest {
 		personalInfo.setAddress("Amarilis St, 70.");
 		personalInfo.setPhone("+55 48 99110-8741");
 		personalInfo.setEmail("lepfloripa@gmail.com");
-		personalInfo.setBirth(sdf.parse("02/22/1985"));
+		personalInfo.setBirth(LocalDate.of(1985, 2, 22));
 		personalInfo.setNationality("Brazilian");
 		resume.setPersonalInfo(personalInfo);
 		return resume;

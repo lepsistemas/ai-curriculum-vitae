@@ -10,7 +10,7 @@ import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 
 @Configuration
-public class SpringConfiguration {
+public class BeanConfiguration {
 	
 	@Bean
 	public ResumeDeliveryApi resumeDeliveryApi() {

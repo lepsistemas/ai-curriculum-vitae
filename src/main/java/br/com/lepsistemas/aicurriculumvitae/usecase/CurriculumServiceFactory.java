@@ -1,13 +1,9 @@
-package br.com.lepsistemas.aicurriculumvitae.delivery;
+package br.com.lepsistemas.aicurriculumvitae.usecase;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import br.com.lepsistemas.aicurriculumvitae.infrastructure.spring.RequestDto;
-import br.com.lepsistemas.aicurriculumvitae.usecase.ApiService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.exception.InvalidActionException;
 
 public class CurriculumServiceFactory {

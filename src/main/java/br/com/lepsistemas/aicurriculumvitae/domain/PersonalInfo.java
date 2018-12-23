@@ -1,8 +1,11 @@
 package br.com.lepsistemas.aicurriculumvitae.domain;
 
+import static java.time.format.DateTimeFormatter.ofPattern;
 import static org.apache.commons.lang3.builder.EqualsBuilder.reflectionEquals;
 
-import java.util.Date;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class PersonalInfo implements Domain {
 
@@ -13,7 +16,8 @@ public class PersonalInfo implements Domain {
 	private String address;
 	private String phone;
 	private String email;
-	private Date birth;
+	@JsonFormat(pattern = "YYYY-MM-dd")
+	private LocalDate birth;
 	private String nationality;
 
 	public String getName() {
@@ -72,11 +76,11 @@ public class PersonalInfo implements Domain {
 		this.email = email;
 	}
 
-	public Date getBirth() {
+	public LocalDate getBirth() {
 		return birth;
 	}
 
-	public void setBirth(Date birth) {
+	public void setBirth(LocalDate birth) {
 		this.birth = birth;
 	}
 
@@ -104,7 +108,9 @@ public class PersonalInfo implements Domain {
 				.append(phone)
 				.append(". You can also be in touch by e-mail, which is ")
 				.append(email)
-				.append(". His nationality is ")
+				.append(". Date birth is ")
+				.append(birth.format(ofPattern("MM/dd/YYYY")))
+				.append(" and his nationality is ")
 				.append(nationality)
 				.append(".")
 				.toString();

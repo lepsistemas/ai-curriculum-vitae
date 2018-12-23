@@ -6,7 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -17,6 +17,7 @@ import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import br.com.lepsistemas.aicurriculumvitae.delivery.ApiResponse;
 import br.com.lepsistemas.aicurriculumvitae.delivery.ResumeDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.domain.PersonalInfo;
 import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
@@ -30,18 +31,20 @@ public class ResumeControllerTest {
 	
 	@MockBean
 	private ResumeDeliveryApi api;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
 
 	@Test
 	public void should_get_resume() throws Exception {
 		
-		given(api.get()).willReturn(createResume());
+		given(api.get()).willReturn(createApiResponseWith(createResume()));
 		
 		MockHttpServletResponse response = mockMvc.perform(get("/resume")).andReturn().getResponse();
 		
 		assertThat(response.getStatus(), is(200));
-		assertThat(response.getContentAsString(), is("{\"personalInfo\":{\"name\":\"Leandro Boeing Vieira\",\"city\":\"Florianopolis\",\"state\":\"SC\",\"country\":\"Brazil\",\"address\":\"Amarilis St, 70.\",\"phone\":\"+55 48 99110-8741\",\"email\":\"lepfloripa@gmail.com\",\"birth\":\"12/30/1984\",\"nationality\":\"Brazilian\"}}"));
+		assertThat(response.getContentAsString(), is("{\"personalInfo\":{\"name\":\"Leandro Boeing Vieira\",\"city\":\"Florianopolis\",\"state\":\"SC\",\"country\":\"Brazil\",\"address\":\"Amarilis St, 70.\",\"phone\":\"+55 48 99110-8741\",\"email\":\"lepfloripa@gmail.com\",\"birth\":\"1985-02-22\",\"nationality\":\"Brazilian\"}}"));
+	}
+	
+	private ApiResponse createApiResponseWith(Resume resume) {
+		return new ApiResponse(resume);
 	}
 	
 	private Resume createResume() throws ParseException {
@@ -53,7 +56,7 @@ public class ResumeControllerTest {
 		personalInfo.setAddress("Amarilis St, 70.");
 		personalInfo.setPhone("+55 48 99110-8741");
 		personalInfo.setEmail("lepfloripa@gmail.com");
-		personalInfo.setBirth(sdf.parse("02/22/1985"));
+		personalInfo.setBirth(LocalDate.of(1985, 2, 22));
 		personalInfo.setNationality("Brazilian");
 		Resume resumeDTO = new Resume();
 		resumeDTO.setPersonalInfo(personalInfo);

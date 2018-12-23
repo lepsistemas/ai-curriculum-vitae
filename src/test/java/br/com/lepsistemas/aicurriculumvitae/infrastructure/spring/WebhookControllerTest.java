@@ -6,12 +6,14 @@ import static org.mockito.BDDMockito.given;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpServletResponse;
@@ -26,7 +28,8 @@ import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
 import br.com.lepsistemas.aicurriculumvitae.usecase.exception.InvalidActionException;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(WebhookController.class)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
 public class WebhookControllerTest {
 	
 	@Autowired
@@ -34,8 +37,6 @@ public class WebhookControllerTest {
 	
 	@MockBean
 	private WebhookDeliveryApi api;
-	
-	private SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/YYYY");
 	
 	@Test
 	public void should_throw_invalid_action_exception() throws Exception {
@@ -81,7 +82,7 @@ public class WebhookControllerTest {
 		).andReturn().getResponse();
 		
 		assertThat(response.getStatus(), is(200));
-		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. His nationality is Brazilian.\",\"displayText\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. His nationality is Brazilian.\"}"));
+		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. Date birth is 02/22/1985 and his nationality is Brazilian.\",\"displayText\":\"Leandro Boeing Vieira lives in Amarilis St, 70, Florianopolis - SC, Brazil. His phone number is +55 48 99110-8741. You can also be in touch by e-mail, which is lepfloripa@gmail.com. Date birth is 02/22/1985 and his nationality is Brazilian.\"}"));
 	}
 
 	private RequestDto createRequestFor(String action) {
@@ -101,7 +102,7 @@ public class WebhookControllerTest {
 		personalInfo.setAddress("Amarilis St, 70");
 		personalInfo.setPhone("+55 48 99110-8741");
 		personalInfo.setEmail("lepfloripa@gmail.com");
-		personalInfo.setBirth(sdf.parse("02/22/1985"));
+		personalInfo.setBirth(LocalDate.of(1985, 2, 22));
 		personalInfo.setNationality("Brazilian");
 		Resume resume = new Resume();
 		resume.setPersonalInfo(personalInfo);

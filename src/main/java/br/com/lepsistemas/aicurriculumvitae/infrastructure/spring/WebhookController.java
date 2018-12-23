@@ -11,14 +11,19 @@ import br.com.lepsistemas.aicurriculumvitae.domain.Domain;
 
 @RestController
 public class WebhookController {
-	
+
 	@Autowired
 	private WebhookDeliveryApi api;
-	
+
 	@PostMapping("/webhook")
 	public ResponseEntity<?> webhook(@RequestBody RequestDto request) {
 		Domain domain = api.get(request);
-		return ResponseEntity.ok().body(new ResponseDto(domain.toString()));
+		
+		
+
+		ResponseDto body = new ResponseDto(domain.toString());
+		
+		return ResponseEntity.ok().body(body);
 	}
 
 }
