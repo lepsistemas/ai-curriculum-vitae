@@ -18,8 +18,6 @@ public class WebhookController {
 	@PostMapping("/webhook")
 	public ResponseEntity<?> webhook(@RequestBody RequestDto request) {
 		Domain domain = api.get(request);
-		
-		
 
 		ResponseDto body = new ResponseDto(domain.toString());
 		

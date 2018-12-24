@@ -1,7 +1,5 @@
 package br.com.lepsistemas.aicurriculumvitae.infrastructure.spring;
 
-import java.text.ParseException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +15,7 @@ public class ResumeController {
 	private ResumeDeliveryApi api;
 	
 	@GetMapping("/resume")
-	public ResponseEntity<Resume> get() throws ParseException {
+	public ResponseEntity<Resume> get() {
 		Resume resume = (Resume) api.get().getData();
 		return ResponseEntity.ok(resume);
 	}
