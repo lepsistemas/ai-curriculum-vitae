@@ -1,1 +1,1 @@
-web: java -jar target/ai-curriculum-vitae-0.0.1-SNAPSHOT.jar
+ web: java $JAVA_OPTS -cp target/ai-curriculum-vitae-0.0.1-SNAPSHOT.jar br.com.lepsistemas.aicurriculumvitae.AiCurriculumVitaeApplication
