@@ -14,11 +14,11 @@ public class CurriculumServiceFactoryTest {
 	private CurriculumServiceFactory factory;
 	private ResumeService resumeService;
 	private PersonalInfoService personalInfoService;
-	private ProfessionalGoalService professionalGoalService;
+	private SkillsService professionalGoalService;
 	
 	@Before
 	public void initialize() {
-		professionalGoalService = new ProfessionalGoalService();
+		professionalGoalService = new SkillsService();
 		personalInfoService = new PersonalInfoService();
 		resumeService = new ResumeService(personalInfoService);
 		factory = new CurriculumServiceFactory(resumeService, personalInfoService, professionalGoalService);

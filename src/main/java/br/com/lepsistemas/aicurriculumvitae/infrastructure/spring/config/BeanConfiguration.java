@@ -7,8 +7,8 @@ import br.com.lepsistemas.aicurriculumvitae.delivery.PersonalInfoDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.delivery.ResumeDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.delivery.WebhookDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
+import br.com.lepsistemas.aicurriculumvitae.usecase.SkillsService;
 
 @Configuration
 public class BeanConfiguration {
@@ -25,7 +25,7 @@ public class BeanConfiguration {
 	
 	@Bean
 	public WebhookDeliveryApi webhookDeliveryApi() {
-		return new WebhookDeliveryApi(resumeService(), personalInfoService(), professionalGoalService());
+		return new WebhookDeliveryApi(resumeService(), personalInfoService(), skillsService());
 	}
 
 	@Bean
@@ -39,8 +39,8 @@ public class BeanConfiguration {
 	}
 	
 	@Bean
-	public ProfessionalGoalService professionalGoalService() {
-		return new ProfessionalGoalService();
+	public SkillsService skillsService() {
+		return new SkillsService();
 	}
 
 }

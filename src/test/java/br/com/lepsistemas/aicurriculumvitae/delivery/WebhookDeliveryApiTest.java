@@ -17,7 +17,7 @@ import br.com.lepsistemas.aicurriculumvitae.domain.PersonalInfo;
 import br.com.lepsistemas.aicurriculumvitae.domain.Resume;
 import br.com.lepsistemas.aicurriculumvitae.infrastructure.spring.RequestDto;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
-import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalGoalService;
+import br.com.lepsistemas.aicurriculumvitae.usecase.SkillsService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -32,7 +32,7 @@ public class WebhookDeliveryApiTest {
 	private PersonalInfoService personalInfoService;
 	
 	@Mock
-	private ProfessionalGoalService professionalGoalService;
+	private SkillsService professionalGoalService;
 	
 	@Before
 	public void initialize() {

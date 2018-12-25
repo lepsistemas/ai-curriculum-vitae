@@ -10,10 +10,10 @@ public class CurriculumServiceFactory {
 	
 	private final Map<String, ApiService> servicesByAction = new HashMap<>();
 	
-	public CurriculumServiceFactory(ResumeService resumeService, PersonalInfoService personalInfoService, ProfessionalGoalService professionalGoalService) {
+	public CurriculumServiceFactory(ResumeService resumeService, PersonalInfoService personalInfoService, SkillsService skillsService) {
 		servicesByAction.put(RequestDto.ALL, resumeService);
 		servicesByAction.put(RequestDto.PERSONAL_INFO, personalInfoService);
-		servicesByAction.put(RequestDto.PROFESSIONAL_GOAL, professionalGoalService);
+		servicesByAction.put(RequestDto.PROFESSIONAL_GOAL, skillsService);
 	}
 
 	public ApiService get(String action) {

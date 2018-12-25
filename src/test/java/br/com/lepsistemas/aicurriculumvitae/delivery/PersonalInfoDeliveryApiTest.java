@@ -39,7 +39,7 @@ public class PersonalInfoDeliveryApiTest {
 		assertThat(apiResponse.getData(), is(personalInfo));
 	}
 
-	private PersonalInfo createPersonalInfo() throws ParseException {
+	private PersonalInfo createPersonalInfo() {
 		PersonalInfo personalInfo = new PersonalInfo();
 		personalInfo.setName("Leandro Boeing Vieira");
 		personalInfo.setCity("Florianopolis");
