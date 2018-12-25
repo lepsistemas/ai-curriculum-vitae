@@ -52,9 +52,8 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<executions>
 					<execution>
-						<phase>package</phase>
 						<goals>
-							<goal>copy</goal>
+							<goal>package</goal>
 						</goals>
 					</execution>
 				</executions>
