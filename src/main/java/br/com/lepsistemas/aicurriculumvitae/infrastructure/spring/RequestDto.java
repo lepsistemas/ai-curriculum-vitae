@@ -7,6 +7,7 @@ public class RequestDto {
 	public static final String ALL = "curriculum.all";
 	public static final String PERSONAL_INFO = "curriculum.personal.info";
 	public static final String PROFESSIONAL_GOAL = "curriculum.professional.goal";
+	public static final String LANGUAGES = "curriculum.languages";
 	
 	private ResultDto result;
 

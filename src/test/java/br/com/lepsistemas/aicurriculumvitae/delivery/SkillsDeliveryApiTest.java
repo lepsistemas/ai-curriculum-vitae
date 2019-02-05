@@ -30,7 +30,7 @@ public class SkillsDeliveryApiTest {
 	}
 	
 	@Test
-	public void should_return_personal_info() throws ParseException {
+	public void should_return_skills() throws ParseException {
 		Skills skills = createSkills();
 		given(service.fetch()).willReturn(skills);
 		
@@ -40,7 +40,7 @@ public class SkillsDeliveryApiTest {
 	}
 
 	private Skills createSkills() {
-		return new Skills(asList("Java"), asList("MongoDB"), asList("Docker"));
+		return new Skills(asList("Java"), asList("MongoDB"));
 	}
 
 }

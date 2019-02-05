@@ -34,7 +34,7 @@ public class PersonalInfoControllerTest {
 	@Test
 	public void should_get_personal_info() throws Exception {
 		
-		given(api.get()).willReturn(createApiResponseWith(createResume()));
+		given(api.get()).willReturn(createApiResponseWith(createPersonalInfo()));
 		
 		MockHttpServletResponse response = mockMvc.perform(get("/personal-info")).andReturn().getResponse();
 		
@@ -46,7 +46,7 @@ public class PersonalInfoControllerTest {
 		return new ApiResponse(personalInfo);
 	}
 	
-	private PersonalInfo createResume() throws ParseException {
+	private PersonalInfo createPersonalInfo() throws ParseException {
 		PersonalInfo personalInfo = new PersonalInfo();
 		personalInfo.setName("Leandro Boeing Vieira");
 		personalInfo.setCity("Florianopolis");

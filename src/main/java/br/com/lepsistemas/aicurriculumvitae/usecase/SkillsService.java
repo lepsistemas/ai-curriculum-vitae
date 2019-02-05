@@ -12,8 +12,7 @@ public class SkillsService implements ApiService {
 	public Skills fetch() {
 		return new Skills(
 				asList("Java", "JavaScript", "Spring Boot", "Ionic", "Angular2+", "ReactJs", "HTML"),
-				asList("PostgreSQL", "MongoDB", "MySQL", "Firebird"),
-				asList("Docker", "Git", "Spring Framework", "Spring Cloud", "Cordova"));
+				asList("PostgreSQL", "MongoDB", "MySQL", "Firebird"));
 	}
 
 }

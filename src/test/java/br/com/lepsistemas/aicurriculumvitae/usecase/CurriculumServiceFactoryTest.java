@@ -14,14 +14,16 @@ public class CurriculumServiceFactoryTest {
 	private CurriculumServiceFactory factory;
 	private ResumeService resumeService;
 	private PersonalInfoService personalInfoService;
-	private SkillsService professionalGoalService;
+	private SkillsService skillsService;
+	private LanguagesService languagesService;
 	
 	@Before
 	public void initialize() {
-		professionalGoalService = new SkillsService();
 		personalInfoService = new PersonalInfoService();
-		resumeService = new ResumeService(personalInfoService);
-		factory = new CurriculumServiceFactory(resumeService, personalInfoService, professionalGoalService);
+		skillsService = new SkillsService();
+		languagesService = new LanguagesService();
+		resumeService = new ResumeService(personalInfoService, skillsService, languagesService);
+		factory = new CurriculumServiceFactory(resumeService, personalInfoService, skillsService, languagesService);
 	}
 	
 	@Test
@@ -42,7 +44,7 @@ public class CurriculumServiceFactoryTest {
 	public void should_make_professional_goal_service() {
 		ApiService apiService = factory.get(RequestDto.PROFESSIONAL_GOAL);
 		
-		assertThat(apiService, Matchers.sameInstance(professionalGoalService));
+		assertThat(apiService, Matchers.sameInstance(skillsService));
 	}
 	
 	@Test(expected = InvalidActionException.class)

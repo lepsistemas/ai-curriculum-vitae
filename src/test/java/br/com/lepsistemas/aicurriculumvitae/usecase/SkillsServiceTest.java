@@ -24,9 +24,8 @@ public class SkillsServiceTest {
 	public void should_fetch_personal_info() throws ParseException {
 		Skills professionalGoal = service.fetch();
 		
-		assertThat(professionalGoal.getProgrammingLanguages(), is(asList("Java", "JavaScript", "Spring Boot", "Ionic", "Angular2+", "ReactJs", "HTML")));
+		assertThat(professionalGoal.getProgramming(), is(asList("Java", "JavaScript", "Spring Boot", "Ionic", "Angular2+", "ReactJs", "HTML")));
 		assertThat(professionalGoal.getDatabases(), is(asList("PostgreSQL", "MongoDB", "MySQL", "Firebird")));
-		assertThat(professionalGoal.getTechnologies(), is(asList("Docker", "Git", "Spring Framework", "Spring Cloud", "Cordova")));
 	}
 
 }
