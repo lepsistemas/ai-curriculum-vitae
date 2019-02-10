@@ -16,14 +16,14 @@ import br.com.lepsistemas.aicurriculumvitae.usecase.LanguagesService;
 @RunWith(MockitoJUnitRunner.class)
 public class LanguagesDeliveryApiTest {
 	
-	private LanguagesDeliveryApi delivery;
+	private LanguagesDeliveryApi api;
 	
 	@Mock
 	private LanguagesService service;
 	
 	@Before
 	public void initialize() {
-		delivery = new LanguagesDeliveryApi(service);
+		api = new LanguagesDeliveryApi(service);
 	}
 	
 	@Test
@@ -31,7 +31,7 @@ public class LanguagesDeliveryApiTest {
 		Languages languages = new Languages();
 		given(service.fetch()).willReturn(languages);
 		
-		ApiResponse apiResponse = delivery.get();
+		ApiResponse apiResponse = api.get();
 		
 		assertThat(apiResponse.getData(), is(languages));
 	}

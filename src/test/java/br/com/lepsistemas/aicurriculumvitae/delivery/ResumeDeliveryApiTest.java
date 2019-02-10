@@ -20,14 +20,14 @@ import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 @RunWith(MockitoJUnitRunner.class)
 public class ResumeDeliveryApiTest {
 	
-	private ResumeDeliveryApi delivery;
+	private ResumeDeliveryApi api;
 	
 	@Mock
 	private ResumeService service;
 	
 	@Before
 	public void initialize() {
-		delivery = new ResumeDeliveryApi(service);
+		api = new ResumeDeliveryApi(service);
 	}
 	
 	@Test
@@ -35,7 +35,7 @@ public class ResumeDeliveryApiTest {
 		Resume resume = createResume();
 		given(service.fetch()).willReturn(resume);
 		
-		ApiResponse apiResponse = delivery.get();
+		ApiResponse apiResponse = api.get();
 		
 		assertThat(apiResponse.getData(), is(resume));
 	}

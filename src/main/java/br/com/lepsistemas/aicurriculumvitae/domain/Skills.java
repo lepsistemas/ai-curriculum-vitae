@@ -11,13 +11,21 @@ public class Skills implements Domain {
 		this.programming = programming;
 		this.databases = databases;
 	}
-	
+
 	public List<String> getProgramming() {
 		return programming;
 	}
 
+	public void setProgramming(List<String> programming) {
+		this.programming = programming;
+	}
+
 	public List<String> getDatabases() {
 		return databases;
+	}
+
+	public void setDatabases(List<String> databases) {
+		this.databases = databases;
 	}
 
 	@Override

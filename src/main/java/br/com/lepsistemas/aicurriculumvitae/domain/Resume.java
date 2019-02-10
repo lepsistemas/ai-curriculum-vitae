@@ -5,6 +5,7 @@ public class Resume implements Domain {
 	private PersonalInfo personalInfo;
 	private Languages languages;
 	private Skills skills;
+	private Professional professional;
 
 	public PersonalInfo getPersonalInfo() {
 		return personalInfo;
@@ -28,6 +29,14 @@ public class Resume implements Domain {
 
 	public void setSkills(Skills skills) {
 		this.skills = skills;
+	}
+
+	public Professional getProfessional() {
+		return professional;
+	}
+
+	public void setProfessional(Professional professional) {
+		this.professional = professional;
 	}
 
 	@Override

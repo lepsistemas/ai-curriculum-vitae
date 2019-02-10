@@ -5,10 +5,12 @@ import org.springframework.context.annotation.Configuration;
 
 import br.com.lepsistemas.aicurriculumvitae.delivery.LanguagesDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.delivery.PersonalInfoDeliveryApi;
+import br.com.lepsistemas.aicurriculumvitae.delivery.ProfessionalDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.delivery.ResumeDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.delivery.WebhookDeliveryApi;
 import br.com.lepsistemas.aicurriculumvitae.usecase.LanguagesService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
+import br.com.lepsistemas.aicurriculumvitae.usecase.ProfessionalService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.ResumeService;
 import br.com.lepsistemas.aicurriculumvitae.usecase.SkillsService;
 
@@ -31,8 +33,13 @@ public class BeanConfiguration {
 	}
 	
 	@Bean
+	public ProfessionalDeliveryApi professionalExperiencesDeliveryApi() {
+		return new ProfessionalDeliveryApi(professionalExperiencesService());
+	}
+
+	@Bean
 	public WebhookDeliveryApi webhookDeliveryApi() {
-		return new WebhookDeliveryApi(resumeService(), personalInfoService(), skillsService(), languagesService());
+		return new WebhookDeliveryApi(resumeService(), personalInfoService(), skillsService(), languagesService(), professionalExperiencesService());
 	}
 
 	@Bean
@@ -53,6 +60,11 @@ public class BeanConfiguration {
 	@Bean
 	public SkillsService skillsService() {
 		return new SkillsService();
+	}
+	
+	@Bean
+	public ProfessionalService professionalExperiencesService() {
+		return new ProfessionalService();
 	}
 
 }

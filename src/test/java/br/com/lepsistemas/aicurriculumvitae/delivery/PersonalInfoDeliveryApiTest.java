@@ -19,14 +19,14 @@ import br.com.lepsistemas.aicurriculumvitae.usecase.PersonalInfoService;
 @RunWith(MockitoJUnitRunner.class)
 public class PersonalInfoDeliveryApiTest {
 	
-	private PersonalInfoDeliveryApi delivery;
+	private PersonalInfoDeliveryApi api;
 	
 	@Mock
 	private PersonalInfoService service;
 	
 	@Before
 	public void initialize() {
-		delivery = new PersonalInfoDeliveryApi(service);
+		api = new PersonalInfoDeliveryApi(service);
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class PersonalInfoDeliveryApiTest {
 		PersonalInfo personalInfo = createPersonalInfo();
 		given(service.fetch()).willReturn(personalInfo);
 		
-		ApiResponse apiResponse = delivery.get();
+		ApiResponse apiResponse = api.get();
 		
 		assertThat(apiResponse.getData(), is(personalInfo));
 	}

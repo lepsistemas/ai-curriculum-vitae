@@ -8,6 +8,7 @@ public class RequestDto {
 	public static final String PERSONAL_INFO = "curriculum.personal.info";
 	public static final String SKILLS = "curriculum.skills";
 	public static final String LANGUAGES = "curriculum.languages";
+	public static final String PROFESSIONAL_EXPERIENCES = "curriculum.professional.experiences";
 	
 	private ResultDto result;
 
