@@ -42,7 +42,7 @@ public class CurriculumServiceFactoryTest {
 	
 	@Test
 	public void should_make_professional_goal_service() {
-		ApiService apiService = factory.get(RequestDto.PROFESSIONAL_GOAL);
+		ApiService apiService = factory.get(RequestDto.SKILLS);
 		
 		assertThat(apiService, Matchers.sameInstance(skillsService));
 	}

@@ -13,7 +13,7 @@ public class CurriculumServiceFactory {
 	public CurriculumServiceFactory(ResumeService resumeService, PersonalInfoService personalInfoService, SkillsService skillsService, LanguagesService languagesService) {
 		servicesByAction.put(RequestDto.ALL, resumeService);
 		servicesByAction.put(RequestDto.PERSONAL_INFO, personalInfoService);
-		servicesByAction.put(RequestDto.PROFESSIONAL_GOAL, skillsService);
+		servicesByAction.put(RequestDto.SKILLS, skillsService);
 		servicesByAction.put(RequestDto.LANGUAGES, languagesService);
 	}
 
