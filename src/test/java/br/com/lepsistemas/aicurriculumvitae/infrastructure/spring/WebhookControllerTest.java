@@ -66,7 +66,7 @@ public class WebhookControllerTest {
 		).andReturn().getResponse();
 		
 		assertThat(response.getStatus(), is(200));
-		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro's curriculum is vast. I think you'll get tired of listening entirely. Please, tap on the right button and I'll take you to his Curriculum Vitae page. From there, you'll be able to send it to your e-mail.\",\"displayText\":\"Leandro's curriculum is vast. I think you'll get tired of listening entirely. Please, tap on the right button and I'll take you to his Curriculum Vitae page. From there, you'll be able to send it to your e-mail.\"}"));
+		assertThat(response.getContentAsString(), is("{\"speech\":\"Leandro's curriculum is vast. I think you'll get tired of listening entirely.\",\"displayText\":\"Leandro's curriculum is vast. I think you'll get tired of listening entirely.\"}"));
 	}
 	
 	@Test
