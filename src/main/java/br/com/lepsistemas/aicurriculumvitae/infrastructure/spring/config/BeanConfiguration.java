@@ -34,17 +34,17 @@ public class BeanConfiguration {
 	
 	@Bean
 	public ProfessionalDeliveryApi professionalExperiencesDeliveryApi() {
-		return new ProfessionalDeliveryApi(professionalExperiencesService());
+		return new ProfessionalDeliveryApi(professionalService());
 	}
 
 	@Bean
 	public WebhookDeliveryApi webhookDeliveryApi() {
-		return new WebhookDeliveryApi(resumeService(), personalInfoService(), skillsService(), languagesService(), professionalExperiencesService());
+		return new WebhookDeliveryApi(resumeService(), personalInfoService(), skillsService(), languagesService(), professionalService());
 	}
 
 	@Bean
 	public ResumeService resumeService() {
-		return new ResumeService(personalInfoService(), skillsService(), languagesService());
+		return new ResumeService(personalInfoService(), skillsService(), languagesService(), professionalService());
 	}
 
 	@Bean
@@ -63,7 +63,7 @@ public class BeanConfiguration {
 	}
 	
 	@Bean
-	public ProfessionalService professionalExperiencesService() {
+	public ProfessionalService professionalService() {
 		return new ProfessionalService();
 	}
 

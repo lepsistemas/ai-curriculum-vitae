@@ -6,7 +6,7 @@
 
 	<groupId>br.com.lepsistemas</groupId>
 	<artifactId>ai-curriculum-vitae</artifactId>
-	<version>0.0.5</version>
+	<version>0.0.6</version>
 	<packaging>jar</packaging>
 
 	<name>ai-curriculum-vitae</name>

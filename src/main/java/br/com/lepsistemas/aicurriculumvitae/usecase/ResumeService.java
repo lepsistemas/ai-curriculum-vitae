@@ -11,11 +11,13 @@ public class ResumeService implements ApiService {
 	private PersonalInfoService personalInfoService;
 	private LanguagesService languagesService;
 	private SkillsService skillsService;
+	private ProfessionalService professionalService;
 	
-	public ResumeService(PersonalInfoService personalInfoService, SkillsService skillsService, LanguagesService languagesService) {
+	public ResumeService(PersonalInfoService personalInfoService, SkillsService skillsService, LanguagesService languagesService, ProfessionalService professionalService) {
 		this.personalInfoService = personalInfoService;
 		this.skillsService = skillsService;
 		this.languagesService = languagesService;
+		this.professionalService = professionalService;
 	}
 	
 	public Domain fetch() {
@@ -23,6 +25,7 @@ public class ResumeService implements ApiService {
 		resume.setPersonalInfo(personalInfoService.fetch());
 		resume.setSkills(skillsService.fetch());
 		resume.setLanguages(languagesService.fetch());
+		resume.setProfessional(professionalService.fetch());
 		return resume;
 	}
 

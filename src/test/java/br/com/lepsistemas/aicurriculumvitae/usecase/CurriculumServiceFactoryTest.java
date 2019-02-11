@@ -16,16 +16,16 @@ public class CurriculumServiceFactoryTest {
 	private PersonalInfoService personalInfoService;
 	private SkillsService skillsService;
 	private LanguagesService languagesService;
-	private ProfessionalService professionalExperiencesService;
+	private ProfessionalService professionalService;
 	
 	@Before
 	public void initialize() {
-		resumeService = new ResumeService(personalInfoService, skillsService, languagesService);
+		resumeService = new ResumeService(personalInfoService, skillsService, languagesService, professionalService);
 		personalInfoService = new PersonalInfoService();
 		skillsService = new SkillsService();
 		languagesService = new LanguagesService();
-		professionalExperiencesService = new ProfessionalService();
-		factory = new CurriculumServiceFactory(resumeService, personalInfoService, skillsService, languagesService, professionalExperiencesService);
+		professionalService = new ProfessionalService();
+		factory = new CurriculumServiceFactory(resumeService, personalInfoService, skillsService, languagesService, professionalService);
 	}
 	
 	@Test

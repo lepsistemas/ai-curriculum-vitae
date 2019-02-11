@@ -18,12 +18,15 @@ public class ResumeServiceTest {
 
 	private SkillsService skillsService;
 
+	private ProfessionalService professionalService;
+
 	@Before
 	public void initialize() {
 		personalInfoService = new PersonalInfoService();
 		languagesService = new LanguagesService();
 		skillsService = new SkillsService();
-		resumeService = new ResumeService(personalInfoService, skillsService, languagesService);
+		professionalService = new ProfessionalService();
+		resumeService = new ResumeService(personalInfoService, skillsService, languagesService, professionalService);
 	}
 	
 	@Test
@@ -33,6 +36,7 @@ public class ResumeServiceTest {
 		assertThat(resume.getPersonalInfo().toString(), is(personalInfoService.fetch().toString()));
 		assertThat(resume.getSkills().toString(), is(skillsService.fetch().toString()));
 		assertThat(resume.getLanguages().toString(), is(languagesService.fetch().toString()));
+		assertThat(resume.getProfessional().toString(), is(professionalService.fetch().toString()));
 	}
 
 }
